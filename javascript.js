@@ -1,20 +1,11 @@
-class Pizza {
-    constructor(id, name, ingredientes, precio) {
-        this.id = id;
-        this.name = name;
-        this.ingredientes = ingredientes;
-        this.precio = precio;
-    }
-}
-
 const pizzas = [
-    mozzarella = new Pizza(1, "Mozzarella", ["queso muzzarela", "salsa de tomate", "aceitunas"], 500),
-    especial = new Pizza(2, "Especial", ["queso muzzarela", "salsa de tomate", "jamón cocido", "morrón"], 530),
-    fugazzetta = new Pizza(3, "Fugazzetta", ["queso cuartirolo", "cebolla"], 640),
-    napolitana = new Pizza (4, "Napolitana", ["queso muzzarela", "salsa de tomate", "rodajas de tomate", "albahaca"], 580),
-    calabresa = new Pizza(5, "Calabresa", ["queso muzzarella", "salsa de tomate", "longaniza calabresa"], 620),
-    rucula = new Pizza(6, "de Rúcula", ["queso muzzarella", "queso parmesano", "rúcula", "jamón crudo"], 650),
-    marinara = new Pizza(7, "Marinara", ["salsa de tomate", "orégano", "ajo", "albahaca"], 550)
+    {id: 1, name: "Mozzarella", ingredientes: ["queso muzzarela", "salsa de tomate", "aceitunas"], precio: 500},
+    {id: 2, name: "Especial", ingredientes: ["queso muzzarela", "salsa de tomate", "jamón cocido", "morrón"], precio: 530},
+    {id: 3, name: "Fugazzetta", ingredientes: ["queso muzzarela", "queso cuartirolo", "cebolla"], precio: 640},
+    {id: 4, name: "Napolitana", ingredientes: ["queso muzzarela", "salsa de tomate", "rodajas de tomate", "albahaca"], precio: 580},
+    {id: 5, name: "Calabresa", ingredientes: ["queso muzzarella", "salsa de tomate", "longaniza calabresa"], precio: 620},
+    {id: 6, name: "de Rúcula", ingredientes: ["queso muzzarella", "queso parmesano", "rúcula", "jamón crudo"], precio: 650},
+    {id: 7, name: "Marinara", ingredientes: ["salsa de tomate", "orégano", "ajo", "albahaca"], precio: 550}
 ]
 
 //Imprimir las pizzas que tienen un ID impar
