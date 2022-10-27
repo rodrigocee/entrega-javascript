@@ -16,35 +16,36 @@ for (let i = 0; i < pizzas.length; i++) {
     };
 }
 
-// Imprimir las pizzas que salen menos de $600
+// Hay pizzas que salen menos de $600?
 
-for (let i = 0; i < pizzas.length; i++) {
-    if (pizzas[i].precio < 600) {
-        console.log(`La pizza ${pizzas[i].name} sale $${pizzas[i].precio}, menos de $600`);
-    };
+function pizzaEconomica() {
+    const pizzasMenos600 = pizzas.find(pizza => pizza.precio < 600)
+    if (pizzasMenos600) {
+        return "Si, hay pizzas de menos de $600"
+    }
 }
 
-// El nombre de cada pizza con su precio
+console.log(pizzaEconomica())
 
-for (let i = 0; i < pizzas.length; i++) {
-    console.log(`La pizza ${pizzas[i].name} sale $${pizzas[i].precio}`);
-}
+// Imprimir el nombre de cada pizza con su precio
 
-// Ingredientes de cada pizza con iteración adentro de iteración
+const pizzasYPrecio = pizzas.forEach(pizza => console.log(`La pizza ${pizza.name} sale $${pizza.precio}`))
+
+// Ingredientes de cada pizza usando una iteración adentro de otra
 
 for (let i = 0; i < pizzas.length; i++) {
     let ingredientesDePizza = "";
     for (let j = 0; j < pizzas[i].ingredientes.length; j++) {
-        ingredientesDePizza += pizzas[i].ingredientes[j] + "- "
+        ingredientesDePizza += pizzas[i].ingredientes[j] + " - "
     }
-    console.log(`Los ingredientes de la piza ${pizzas[i].name} son: ${ingredientesDePizza} `)
+    console.log(`Los ingredientes de la pizza ${pizzas[i].name} son: ${ingredientesDePizza}`)
 }
 
 // mismo ejercicio, otra resolución
 
 for (let i = 0; i < pizzas.length; i++) {
     let ingredientesDePizza = pizzas[i].ingredientes.join(", ")
-    console.log(`Los ingredientes de nuestra pizza ${pizzas[i].name} son: ${ingredientesDePizza.toLowerCase()}`)
+    console.log(`Los ingredientes de la pizza ${pizzas[i].name} son: ${ingredientesDePizza}`)
 }
 
 
