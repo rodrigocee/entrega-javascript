@@ -11,10 +11,10 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 80px;
+    gap: 30px;
 }
 
-.pizza-form {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +22,26 @@ main {
     gap: 10px;
 }
 
-.container {
+form input[type=text] {
+    padding: 5px;
+}
+
+form input[type=submit] {
+    padding: 3px 15px;
+}
+
+#error {
+    display: block;
+    height: 20px;
+    color: red;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     width: 600px;
     height: 300px;
     border: 1px solid black ;

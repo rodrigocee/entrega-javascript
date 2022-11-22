@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pizzeria</title>
-    <link rel="stylesheet" href="./styles.css">
-    <script src="./main.js"></script>
-</head>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-<body>
+  <body>
     <main>
-        <h1>Buscar Pizzas por ID 🍕</h1>
-        <form class="pizza-form">
-            <label for="pizzaId__input">Ingrese un ID válido</label>
-            <input type="number" name="pizzaId__input" id="pizzaId__input">
-            <input type="button" value="Buscar">
-        </form>
-        <div class="container">
-
-        </div>
+      <h1>Buscar Pizzas por ID 🍕</h1>
+      <p id="error"></p>
+      <form id="input-form">
+        <input type="text" id="id-input" placeholder="Ingresa un ID">
+        <button>Buscar</button>
+      </form>
+      <div id="container">   
+      </div>
     </main>
-</body>
-
+    <script src="./main.js"></script>
+  </body>
 </html>
