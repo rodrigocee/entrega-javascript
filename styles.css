@@ -12,6 +12,8 @@ main {
     align-items: center;
     justify-content: center;
     gap: 30px;
+    background-color: #252525;
+    color: #FFFFFF;
 }
 
 form {
@@ -26,23 +28,60 @@ form input[type=text] {
     padding: 5px;
 }
 
-form input[type=submit] {
-    padding: 3px 15px;
+form button {
+    padding: 10px 20px;
+    background-color: #FFA400;
+    border: 1px solid #252525;
+    border-radius: 0.5em;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 #error {
     display: block;
     height: 20px;
-    color: red;
+    color: #FC2933;
 }
 
-#container {
+#search-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    width: 600px;
-    height: 300px;
-    border: 1px solid black ;
+    width: 500px;
+    height: 500px;
+    background-color: #353434;
+    border: 1px solid #FFFFFF ;
+}
+
+#result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    color: #252525;
+    font-weight: 700;
+}
+
+#result h2 {
+    padding: 10px;
+    background-color: #FFA400;
+    border-radius: 0 0 0.5em 0.5em;
+}
+
+#result h3 {
+    padding: 10px;
+    background-color: #FC2933;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    font-size: 24px;
+    font-style: italic;
+}
+
+#result span {
+    background-color: #FFA400;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
 }

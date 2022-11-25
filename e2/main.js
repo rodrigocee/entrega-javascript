@@ -1,13 +1,12 @@
 const pizzas = [
   {
     id: 1,
-    name: "Muzzarella",
+    name: "Mozzarella",
     ingredientes: [
       "queso muzzarela", 
       "salsa de tomate", 
       "aceitunas"],
     precio: 500,
-    image: './images/muzza.png'
   },
   {
     id: 2,
@@ -19,7 +18,6 @@ const pizzas = [
       "morrón",
     ],
     precio: 530,
-    image: './images/especial.png'
   },
   {
     id: 3,
@@ -29,7 +27,6 @@ const pizzas = [
       "queso cuartirolo",
       "cebolla"],
     precio: 640,
-    image: './images/fuga.png'
   },
   {
     id: 4,
@@ -41,7 +38,6 @@ const pizzas = [
       "albahaca",
     ],
     precio: 580,
-    image: './images/napolitana.png'
   },
   {
     id: 5,
@@ -52,7 +48,6 @@ const pizzas = [
       "longaniza calabresa",
     ],
     precio: 620,
-    image: './images/calabresa.png'
   },
   {
     id: 6,
@@ -64,60 +59,67 @@ const pizzas = [
       "jamón crudo",
     ],
     precio: 650,
-    image: './images/rucula.png'
   },
   {
     id: 7,
     name: "Marinara",
     ingredientes: ["salsa de tomate", "orégano", "ajo", "albahaca"],
     precio: 550,
-    image: './images/marinara.png'
   },
 ];
 
 const formInput = document.getElementById('input-form');
-const numberInput = document.getElementById('number-input');
-const searchResult = document.getElementById('search-display');
+const numberInput = document.getElementById('id-input');
 
 const isEmpty = (value) => !value.length;
+const isNumber = (value) => /[0-9]/.test(value);
 
 const showError = (message) => {
-  searchResult.innerHTML = `<span id ="error">${message}</span>`;
+    let errorContainer = document.getElementById("error");
+    errorContainer.textContent = message;
 };
 
-const showPizza = (txt) => {
-  searchResult.innerHTML = txt;
+const clearError = () => {
+    let errorContainer = document.getElementById("error");
+    errorContainer.textContent = '';
+};
+
+const showInput = (txt) => {
+    let contenedorHTML = document.getElementById('container');
+    contenedorHTML.innerHTML = txt;
 }
 
-const inputIsValid = () => {
+const clearInput = () => {
+    let contenedorHTML = document.getElementById('container');
+    contenedorHTML.innerHTML = '';
+}
+
+const isValid = () => {
     let valid = false;
     let input = numberInput.value;
-
     if (isEmpty(input)) {
-        showError('Primero ingresá un ID')
-    } else if (isNaN(input)) {
+        showError('Ingresá un ID')
+        clearInput();
+    } else if (!isNumber(input)) {
         showError('El ID solo debe contener números')
-    } else if (!pizzas.find(e => e.id === parseInt(input))) {
-        showError('No se encontró 🤔')
+        clearInput();
     } else {
-      valid = true;
-    }
-    return valid;
-}
+        valid = true;
+        clearError()
+    } return valid
+};
 
-const renderPizza = (pizza) => `
-<div id="result" style="background-image: url(${pizza.image});">
-          <h2>${pizza.name}</h2>
-          <h3>$${pizza.precio}</h3>
-          <span>Ingredientes: ${pizza.ingredientes}</span>
-        </div>
-`;
+const renderPizza = (pizza) => `<h2>${pizza.name}</h2>
+<h3>$${pizza.precio}</h3>`
 
 formInput.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (inputIsValid()) {
-      let pizzaToRender = pizzas.find(e => e.id === parseInt(numberInput.value));
-      showPizza(renderPizza(pizzaToRender))
+    if (isValid()) {
+        let HTMLcontent = '';
+        let inputFind = pizzas.find(pizza => pizza.id === parseInt(numberInput.value));
+        inputFind === undefined ? showError('No se encontro el ID') 
+        : HTMLcontent = renderPizza(inputFind);
+        showInput(HTMLcontent)
     }   
     formInput.reset()
 });
