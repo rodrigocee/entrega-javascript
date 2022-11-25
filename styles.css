@@ -38,9 +38,14 @@ form button {
 }
 
 #error {
-    display: block;
-    height: 20px;
+    background-color: rgb(37, 37, 37, 0.5);
+    padding: 10px;
+    width: 100%;
+    height: 50px;
     color: #FC2933;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
 }
 
 #search-display {

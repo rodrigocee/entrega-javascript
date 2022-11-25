@@ -83,6 +83,7 @@ const isEmpty = (value) => !value.length;
 
 const showError = (message) => {
   searchResult.innerHTML = `<span id ="error">${message}</span>`;
+  searchResult.style.backgroundImage = "url('./images/nohay.png')";
 };
 
 const showPizza = (txt) => {
