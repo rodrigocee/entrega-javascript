@@ -75,11 +75,17 @@ const pizzas = [
   },
 ];
 
+// dom
+
 const formInput = document.getElementById('input-form');
 const numberInput = document.getElementById('number-input');
 const searchResult = document.getElementById('search-display');
 
-const isEmpty = (value) => !value.length;
+const saveToLocalStorage = (element) => {
+  localStorage.setItem("pizza", JSON.stringify(element));
+};
+
+// elemento o error
 
 const showError = (message) => {
   searchResult.innerHTML = `<span id ="error">${message}</span>`;
@@ -90,10 +96,13 @@ const showPizza = (txt) => {
   searchResult.innerHTML = txt;
 }
 
+// validación
+
+const isEmpty = (value) => !value.length;
+
 const inputIsValid = () => {
     let valid = false;
     let input = numberInput.value;
-
     if (isEmpty(input)) {
         showError('Primero ingresá un ID')
     } else if (isNaN(input)) {
@@ -105,6 +114,8 @@ const inputIsValid = () => {
     }
     return valid;
 }
+
+// render
 
 const renderPizza = (pizza) => `
 <div id="result" style="background-image: url(${pizza.image});">
@@ -119,6 +130,15 @@ formInput.addEventListener('submit', (e) => {
     if (inputIsValid()) {
       let pizzaToRender = pizzas.find(e => e.id === parseInt(numberInput.value));
       showPizza(renderPizza(pizzaToRender))
-    }   
+      saveToLocalStorage(pizzaToRender);
+    }
     formInput.reset()
 });
+
+// iniciar con ultimo guardado
+
+function init() {
+  const pizza = JSON.parse(localStorage.getItem("pizza")) || [];
+  showPizza(renderPizza(pizza));
+}
+init();
