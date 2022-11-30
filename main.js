@@ -92,8 +92,14 @@ const showError = (message) => {
   searchResult.style.backgroundImage = "url('./images/nohay.png')";
 };
 
-const showPizza = (txt) => {
-  searchResult.innerHTML = txt;
+const showPizza = (pizza) => {
+  searchResult.innerHTML = `
+  <div id="result" style="background-image: url(${pizza.image});">
+            <h2>${pizza.name}</h2>
+            <h3>$${pizza.precio}</h3>
+            <span>Ingredientes: ${pizza.ingredientes}</span>
+          </div>
+  `;
 }
 
 // validación
@@ -115,21 +121,13 @@ const inputIsValid = () => {
     return valid;
 }
 
-// render
-
-const renderPizza = (pizza) => `
-<div id="result" style="background-image: url(${pizza.image});">
-          <h2>${pizza.name}</h2>
-          <h3>$${pizza.precio}</h3>
-          <span>Ingredientes: ${pizza.ingredientes}</span>
-        </div>
-`;
+// submit
 
 formInput.addEventListener('submit', (e) => {
     e.preventDefault();
     if (inputIsValid()) {
       let pizzaToRender = pizzas.find(e => e.id === parseInt(numberInput.value));
-      showPizza(renderPizza(pizzaToRender))
+      showPizza(pizzaToRender)
       saveToLocalStorage(pizzaToRender);
     }
     formInput.reset()
@@ -138,7 +136,7 @@ formInput.addEventListener('submit', (e) => {
 // iniciar con ultimo guardado
 
 function init() {
-  const pizza = JSON.parse(localStorage.getItem("pizza")) || [];
-  showPizza(renderPizza(pizza));
+  const pizza = JSON.parse(localStorage.getItem("pizza")) || '';
+  if (pizza !== '') showPizza(pizza); 
 }
 init();
