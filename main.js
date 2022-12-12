@@ -97,7 +97,7 @@ const showPizza = (pizza) => {
   <div id="result" style="background-image: url(${pizza.image});">
             <h2>${pizza.name}</h2>
             <h3>$${pizza.precio}</h3>
-            <span>Ingredientes: ${pizza.ingredientes}</span>
+            <span>Ingredientes: ${pizza.ingredientes.join(", ")}</span>
           </div>
   `;
 }
